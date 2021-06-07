@@ -1,13 +1,15 @@
-'use strict';
-const mockDBCalls = require('../database/index.js');
+"use strict";
+const mockDBCalls = require("../database/index.js");
 
 const getUsersHandler = async (request, response) => {
-    console.log('hitting be');
+  try {
     const data = await mockDBCalls.getUsers();
-    // console.log('data',data);
     return response.status(200).send(JSON.stringify(data));
+  } catch (e) {
+    console.error(e);
+  }
 };
 
 module.exports = (app) => {
-    app.get('/users', getUsersHandler);
+  app.get("/users", getUsersHandler);
 };

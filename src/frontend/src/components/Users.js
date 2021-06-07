@@ -24,9 +24,9 @@ function Users() {
             <th>Age</th>
           </tr>
         </thead>
-        {users.map((u) => {
+        {users.map((u,idx) => {
           return (
-            <tbody>
+              <tbody key={idx}>
               <tr>
                 <td>{u.username}</td>
                 <td>{u.age}</td>

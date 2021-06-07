@@ -8,7 +8,7 @@ function DropdownList() {
   const handleSelect = (e) => {
     setVal(e);
   };
-
+// calling the API whenever item changes (val)
   React.useEffect(() => {
     axios
       .get(`http://localhost:5000/users/age/?Item=${val}`)
@@ -42,9 +42,9 @@ function DropdownList() {
             </tr>
           </thead>
 
-          {Object.entries(filteredval).map(([age, count]) => {
+          {Object.entries(filteredval).map(([age, count],idx) => {
             return (
-              <tbody>
+                <tbody key={idx}>
                 <tr>
                   <td>{age}</td>
                   <td>{count}</td>

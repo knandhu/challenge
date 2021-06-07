@@ -4,9 +4,9 @@ const app = express();
 const registerRoutes = require('./routes');
 var cors = require('cors');
 
-// app.get('/', (req, res) => res.send('Hello world!'));
 // server config
 const port = process.env.PORT || 8080;
+
 app.use(cors());
 // app.use(function(req, res, next) {
 //     res.setHeader('Access-Control-Allow-Origin', '*');

@@ -1,19 +1,16 @@
-import {  Table } from "react-bootstrap";
-import React from "react";
+import { Table } from "react-bootstrap";
+import React, { Fragment } from "react";
 import axios from "axios";
 
-
 function Users() {
-    const [users, setUsers] = React.useState([]);
+  const [users, setUsers] = React.useState([]);
 
-     React.useEffect(() => {
-       axios
-         .get("http://localhost:5000/users")
-         .then((res) => setUsers(res.data));
-     }, []);
-    
-    return (
-    <>
+  React.useEffect(() => {
+    axios.get("http://localhost:5000/users").then((res) => setUsers(res.data));
+  }, []);
+
+  return (
+    <Fragment>
       <h1>All Users</h1>
       <h4>Users and their age</h4>
 
@@ -24,19 +21,18 @@ function Users() {
             <th>Age</th>
           </tr>
         </thead>
-        {users.map((u,idx) => {
-          return (
-              <tbody key={idx}>
-              <tr>
+        <tbody>
+          {users.map((u, idx) => (
+              <tr key={idx}>
                 <td>{u.username}</td>
                 <td>{u.age}</td>
               </tr>
-            </tbody>
-          );
-        })}
-            </Table>
-        </>
-    )
+            )
+          )}
+        </tbody>
+      </Table>
+    </Fragment>
+  );
 }
 
 export default Users;

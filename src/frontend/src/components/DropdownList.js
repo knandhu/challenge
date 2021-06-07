@@ -1,5 +1,5 @@
 import { DropdownButton, Dropdown, Table } from "react-bootstrap";
-import React from "react";
+import React, { Fragment } from "react";
 import axios from "axios";
 
 function DropdownList() {
@@ -8,7 +8,7 @@ function DropdownList() {
   const handleSelect = (e) => {
     setVal(e);
   };
-// calling the API whenever item changes (val)
+  // calling the API whenever item changes (val)
   React.useEffect(() => {
     axios
       .get(`http://localhost:5000/users/age/?Item=${val}`)
@@ -16,7 +16,7 @@ function DropdownList() {
   }, [val]);
 
   return (
-    <>
+    <Fragment>
       <p>Age Demographic of Users With __</p>
       <DropdownButton
         id="dropdown-item-button"
@@ -34,27 +34,25 @@ function DropdownList() {
       </DropdownButton>
       <br />
       {val ? (
-        <Table striped bordered hover responsive size='sm'>
+        <Table striped bordered hover responsive size="sm">
           <thead>
             <tr>
               <th>Age</th>
               <th>Count</th>
             </tr>
           </thead>
-
-          {Object.entries(filteredval).map(([age, count],idx) => {
-            return (
-                <tbody key={idx}>
-                <tr>
+          <tbody>
+            {Object.entries(filteredval).map(([age, count], idx) => (
+                <tr key={idx}>
                   <td>{age}</td>
                   <td>{count}</td>
                 </tr>
-              </tbody>
-            );
-          })}
+              )
+            )}
+          </tbody>
         </Table>
       ) : null}
-    </>
+    </Fragment>
   );
 }
 

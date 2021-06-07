@@ -17,7 +17,7 @@ function DropdownList() {
 
   return (
     <>
-      <p>Age Demographic of Users --</p>
+      <p>Age Demographic of Users With __</p>
       <DropdownButton
         id="dropdown-item-button"
         title={!val ? "Item" : val}
@@ -34,7 +34,7 @@ function DropdownList() {
       </DropdownButton>
       <br />
       {val ? (
-        <Table striped bordered hover>
+        <Table striped bordered hover responsive size='sm'>
           <thead>
             <tr>
               <th>Age</th>
